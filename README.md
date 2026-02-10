@@ -1,5 +1,7 @@
 AI Crypto Forecaster: Next-Day Price Prediction
 This project is the practical evolution of my Graduation Thesis, titled: "Cryptocurrency price prediction for the next day using neural networks." It transforms academic research into a functional Full-stack Web Dashboard.
+Project Demo
+https://github.com/user-attachments/assets/9200c8e4-8967-4be6-80b8-ffadbe466d3f
 
 Project Overview
 The core objective of this application is to analyze historical cryptocurrency data and provide price forecasts for the next 24 hours. It bridges the gap between deep learning theory and real-world financial tools.
