@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Գլխավոր{% endblock %}
+{% block content %}
+
+<div class="flex flex-col items-center justify-center min-h-[70vh] text-center px-4">
+    <h1 class="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-r from-yellow-300 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-sm">
+        FUTURE CRYPTO
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mb-10 leading-relaxed font-light">
+        Օգտագործեք արհեստական բանականության հզորությունը՝ կրիպտոշուկայի հաջորդ քայլը կանխատեսելու համար։
+    </p>
+
+    <a href="#crypto-list" class="group relative px-12 py-5 font-bold text-white transition-all duration-300">
+        <span class="absolute inset-0 w-full h-full rounded-full bg-gradient-to-r from-orange-600 to-yellow-500 blur-sm group-hover:blur-md transition-all"></span>
+        <span class="relative bg-orange-600 px-12 py-5 rounded-full border border-white/20">
+            Տեսնել Կրիպտոարժույթները
+        </span>
+    </a>
+</div>
+
+<div id="crypto-list" class="py-20 scroll-mt-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for coin in cryptos %}
+        <div class="glass group relative p-8 rounded-[2rem] border border-white/5 hover:border-yellow-500/50 transition-all duration-500 cursor-pointer overflow-hidden"
+             onclick="predictPrice('{{ coin }}')">
+
+            <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-all"></div>
+
+            <div class="relative flex items-center space-x-6">
+                <div class="w-16 h-16 rounded-2xl bg-white/5 p-2 flex items-center justify-center">
+                    <img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/{{ coin|lower }}.png"
+                         alt="{{ coin }}"
+                         onerror="this.src='https://cdn-icons-png.flaticon.com/512/25/25228.png'">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold tracking-tight">{{ coin }}</h3>
+                    <p class="text-sm text-gray-500 font-mono italic">USD MARKET</p>
+                </div>
+            </div>
+
+            <div class="mt-8 border-t border-white/5 pt-6">
+                <div id="status-{{ coin }}" class="text-gray-400 text-sm italic group-hover:text-yellow-500 transition-colors">
+                    Սեղմեք կանխատեսելու համար ➔
+                </div>
+                <div id="result-{{ coin }}" class="hidden">
+                    <p class="text-xs text-gray-500 uppercase">Կանխատեսվող գին</p>
+                    <p class="text-3xl font-mono font-bold text-yellow-400 italic mt-1">$ --</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+function predictPrice(coin) {
+    const status = document.getElementById('status-' + coin);
+    const result = document.getElementById('result-' + coin);
+    const priceText = result.querySelector('p.text-3xl');
+
+    status.innerHTML = "<span class='animate-pulse text-yellow-500'>AI-ն վերլուծում է...</span>";
+
+
+fetch('/predict/' + coin)
+    .then(res => res.json())
+    .then(data => {
+        if (data.prediction) {
+            status.classList.add('hidden');
+            result.classList.remove('hidden');
+            result.innerHTML = `
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Prediction</p>
+                <p class="text-3xl font-bold text-white italic">$ ${data.prediction.toLocaleString()}</p>
+                <div class="mt-2 flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-xs text-green-400 font-medium italic">Confidence: ${data.confidence}%</span>
+                </div>
+            `;
+        }
+    });
+}
+</script>
+
+{% endblock %}

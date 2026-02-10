@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hy" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <title>CryptoAI - {% block title %}{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        body {
+            background: radial-gradient(circle at top right, #1e293b, #0f172a, #020617);
+        }
+    </style>
+</head>
+<body class="text-white selection:bg-yellow-500/30">
+    <nav class="p-8 flex justify-between items-center container mx-auto">
+        <div class="text-2xl font-black tracking-tighter text-yellow-500">CRYPTO<span class="text-white">AI</span></div>
+        <div class="flex gap-10 font-medium text-sm uppercase tracking-widest text-gray-400">
+            <a href="/" class="hover:text-white transition">Home</a>
+            <a href="/analysis" class="hover:text-white transition">Analysis</a>
+            <a href="/about" class="hover:text-white transition">About</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
