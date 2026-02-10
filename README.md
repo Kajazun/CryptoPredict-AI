@@ -1,59 +1,73 @@
+
+https://github.com/user-attachments/assets/7b2633b2-4b6a-4eb8-b735-4ec85121dc92
+
+https://github.com/user-attachments/assets/4aab4cd6-ca4b-459e-8e74-c2b050035db6
 AI Crypto Forecaster: Next-Day Price Prediction
-This project is the practical evolution of my Graduation Thesis, titled: "Cryptocurrency price prediction for the next day using neural networks." It transforms academic research into a functional Full-stack Web Dashboard.
+This project is a practical implementation of a Graduation Thesis titled: "Cryptocurrency price prediction for the next day using neural networks." The application serves as a functional Full-stack Web Dashboard that translates complex deep learning models into accessible financial insights.
+
 Project Demo
-https://github.com/user-attachments/assets/9200c8e4-8967-4be6-80b8-ffadbe466d3f
+https://github.com/user-attachments/assets/a6e94b1e-9e6f-46e0-a224-ca156661177a
+
 
 Project Overview
-The core objective of this application is to analyze historical cryptocurrency data and provide price forecasts for the next 24 hours. It bridges the gap between deep learning theory and real-world financial tools.
+The primary objective of this system is to analyze historical market trends and provide automated price forecasts for a 24-hour horizon. It focuses on bridging the gap between theoretical Recurrent Neural Networks (RNN) and real-time market software.
 
-Key Features:
-Deep Learning Prediction: Utilizes GRU (Gated Recurrent Unit) networks, optimized for time-series forecasting.
+Key Features
+Deep Learning Forecasts: Employs Gated Recurrent Unit (GRU) architectures specifically optimized for sequential time-series data.
 
-Real-time Data: Fetches live market data using the Yahoo Finance API (yfinance).
+Live Data Integration: Utilizes the Yahoo Finance API (yfinance) for up-to-the-minute market updates.
 
-Automated Signals: Generates BUY or SELL recommendations based on the model's output vs. current price.
+Decision Support: Provides automated BUY or SELL recommendations based on predicted vs. current market value.
 
-Interactive Visualization: Dynamic candlestick charts built with Plotly.js.
+Data Visualization: Includes interactive candlestick charts developed with Plotly.js for detailed technical analysis.
 
-Live News Feed: Real-time crypto news integration for fundamental analysis.
+Sentiment Indicators: Features a live news feed to monitor external market drivers.
 
-Tech Stack
-Backend: Python / Flask
+Technical Stack
+Backend: Python, Flask
 
-AI/Machine Learning: TensorFlow, Keras, Scikit-learn
+Machine Learning: TensorFlow, Keras, Scikit-learn
 
-Data Processing: Pandas, NumPy
+Data Science: Pandas, NumPy
 
-Frontend: Tailwind CSS (Modern Glassmorphism UI), Plotly.js
+Frontend: Tailwind CSS, Plotly.js
 
-API: Yahoo Finance RSS
+Data Source: Yahoo Finance RSS
 
 Methodology
-Based on the research conducted in my thesis, the model:
+The prediction pipeline is structured according to the research findings of the original thesis:
 
-Processes the last 30 days of historical data (Open, High, Low, Close).
+Data Acquisition: Retrieval of the last 30 days of OHLC (Open, High, Low, Close) data.
 
-Normalizes data using MinMaxScaler for stable neural network training.
+Preprocessing: Feature scaling using MinMaxScaler to ensure neural network convergence.
 
-Feeds the sequence into a GRU-based RNN architecture.
+Model Execution: Data is processed through a trained GRU-based RNN model.
 
-Inverts the transformation to provide a human-readable price forecast.
+Post-processing: Inverse transformation of normalized values into human-readable price predictions.
 
-How to Run Locally
-1.Clone the repository:
-https://github.com/Kajazun/CryptoPredict-AI.git
+Local Deployment
+Clone the Repository
+
+Bash
+git clone https://github.com/Kajazun/CryptoPredict-AI.git
 cd CryptoPredict-AI
+Environment Setup
 
-2.Create a Virtual Environment:
+Bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Activation for Windows:
+venv\Scripts\activate
+# Activation for macOS/Linux:
+source venv/bin/activate
+Dependency Installation
 
-3.Install Dependencies:
+Bash
 pip install -r requirements.txt
+Application Launch
 
-4.Launch the App:
+Bash
 python app.py
-Access the dashboard at http://127.0.0.1:5000
+The dashboard will be available at: http://127.0.0.1:5000
 
-Academic Background
-This project represents the final stage of my undergraduate studies, focusing on how Recurrent Neural Networks (RNNs) can identify patterns in highly volatile markets like Cryptocurrency.
+Academic Context
+This software represents the final deliverable of my undergraduate studies. It investigates the efficacy of Gated Recurrent Units in identifying patterns within high-volatility financial environments.
